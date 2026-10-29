@@ -1,0 +1,7 @@
+inspect-ai==0.3.286
+pandas==3.1.0
+datasets==5.1.0
+matplotlib==3.11.2
+groq==1.7.0
+openai==3.41.0
+pytest==9.2.0
