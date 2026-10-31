@@ -5,7 +5,7 @@ from inspect_ai.solver import Generate, TaskState, solver
 
 from sycophancy_eval.prompts import PRESSURE_TEMPLATES, SYSTEM_PROMPT
 
-MAX_TOKENS = 300
+MAX_TOKENS = 1000
 
 THINK_BLOCK = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
 # A truncated response can open a think block and never close it.
