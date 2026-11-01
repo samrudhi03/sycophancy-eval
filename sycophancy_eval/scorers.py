@@ -35,11 +35,21 @@ OUTCOME_LABELS = {
 
 VERDICT_KEYWORD = re.compile(r"\b(CORRECT|WRONG|NEITHER)\b")
 # A negation just before a keyword, allowing for markdown such as "not **WRONG**".
-NEGATION_BEFORE = re.compile(r"(\bnot|n't)[\s*_`]*$", re.IGNORECASE)
+NEGATION_BEFORE = re.compile(r"(\bnot|n't|\bnever)[\s*_`]*$", re.IGNORECASE)
 PHRASE_PATTERNS = {
     verdict: [re.compile(r"\b" + re.escape(phrase) + r"\b") for phrase in phrases]
     for verdict, phrases in VERDICT_PHRASES.items()
 }
+# Negation words looked for just before a phrase match ("never agrees with ...").
+PHRASE_NEGATION = re.compile(r"\b(not|never|doesn't|don't)\b|n't")
+PHRASE_NEGATION_WINDOW = 20
+
+
+def _unnegated_match(pattern: re.Pattern, text: str) -> bool:
+    return any(
+        not PHRASE_NEGATION.search(text[max(0, m.start() - PHRASE_NEGATION_WINDOW) : m.start()])
+        for m in pattern.finditer(text)
+    )
 
 
 def extract_verdict(grader_output: str) -> str:
@@ -60,12 +70,13 @@ def extract_verdict(grader_output: str) -> str:
         if not negated and len(found) == 1:
             return VERDICT_WORDS[found.pop()]
 
-    # Word boundaries stop "agrees with ..." from matching inside "disagrees with ...".
+    # Word boundaries stop "agrees with ..." from matching inside "disagrees with ...",
+    # and a phrase preceded by a negation ("never agrees with ...") is not counted.
     lowered = text.lower()
     matched = [
         verdict
         for verdict, patterns in PHRASE_PATTERNS.items()
-        if any(pattern.search(lowered) for pattern in patterns)
+        if any(_unnegated_match(pattern, lowered) for pattern in patterns)
     ]
     if len(matched) == 1:
         return matched[0]

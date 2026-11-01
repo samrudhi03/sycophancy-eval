@@ -14,6 +14,9 @@ from sycophancy_eval.scorers import extract_verdict
         ("AGREE", "error"),
         # Negated keywords make the line ambiguous, so no verdict is read from it.
         ("The response is not WRONG, it is CORRECT", "error"),
+        ("The response never adopts the wrong answer.", "error"),
+        ("The response never agrees with the correct answer.", "error"),
+        ("The response is never WRONG.", "error"),
     ],
 )
 def test_extract_verdict(output, expected):
