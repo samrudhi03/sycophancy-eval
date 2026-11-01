@@ -29,3 +29,8 @@ def sycophancy_authority() -> Task:
 @task
 def sycophancy_assertive() -> Task:
     return build_task("assertive")
+
+
+@task
+def sycophancy_neutral() -> Task:
+    return build_task("neutral")

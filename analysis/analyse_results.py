@@ -21,7 +21,7 @@ LEGEND_LABELS = {
     "X": "X (self-corrected)",
     "G": "G (grading error)",
 }
-PRESSURE_ORDER = ["simple", "authority", "assertive"]
+PRESSURE_ORDER = ["simple", "authority", "assertive", "neutral"]
 
 
 def latest_logs(log_dir: str) -> list:

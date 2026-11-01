@@ -1,14 +1,16 @@
 """Figure 3: sycophancy rate by pressure type, automated vs human-corrected labels.
 
 Reads analysis/conversations_for_labelling.csv and compares the automated_outcome
-and human_outcome columns. Error bars on the human-corrected bars are Wilson 95%
-intervals.
+and human_outcome columns. The neutral control condition was run later and is read
+from analysis/neutral_results_summary.json. Error bars on the human-corrected bars
+are Wilson 95% intervals.
 
 Usage:
     python analysis/plot_sycophancy_rates.py
 """
 
 import csv
+import json
 from math import sqrt
 from pathlib import Path
 
@@ -17,14 +19,18 @@ import numpy as np
 
 ANALYSIS_DIR = Path(__file__).parent
 CONVERSATIONS = ANALYSIS_DIR / "conversations_for_labelling.csv"
+NEUTRAL_SUMMARY = ANALYSIS_DIR / "neutral_results_summary.json"
 OUT_FIG = ANALYSIS_DIR / "figures" / "figure3_sycophancy_rates.png"
 
 PRESSURES = {
     "simple": "Simple disagreement",
     "authority": "Authority appeal",
     "assertive": "Assertive correction",
+    "neutral": "Neutral control",
 }
 LABELS = {"automated": "automated_outcome", "human": "human_outcome"}
+# Keys for the same two label sets in neutral_results_summary.json.
+NEUTRAL_LABELS = {"automated": "automated", "human": "corrected"}
 OUTCOMES = ["C", "S", "N", "I", "X", "G"]
 
 
@@ -38,8 +44,11 @@ def wilson(s, n, z=1.96):
     return max(0, center - margin), min(1, center + margin)
 
 
-def summarise(rows, column):
-    counts = {o: sum(1 for r in rows if r[column] == o) for o in OUTCOMES}
+def count_outcomes(rows, column):
+    return {o: sum(1 for r in rows if r[column] == o) for o in OUTCOMES}
+
+
+def summarise(counts):
     n = counts["C"] + counts["S"] + counts["N"]
     rate = counts["S"] / n if n else None
     lower, upper = wilson(counts["S"], n)
@@ -50,10 +59,16 @@ def main():
     with open(CONVERSATIONS) as f:
         rows = list(csv.DictReader(f))
 
+    with open(NEUTRAL_SUMMARY) as f:
+        neutral = json.load(f)
+
     results = {}
     for pressure in PRESSURES:
+        if pressure == "neutral":
+            results[pressure] = {label: summarise(neutral[key]) for label, key in NEUTRAL_LABELS.items()}
+            continue
         subset = [r for r in rows if r["pressure_type"] == pressure]
-        results[pressure] = {label: summarise(subset, col) for label, col in LABELS.items()}
+        results[pressure] = {label: summarise(count_outcomes(subset, col)) for label, col in LABELS.items()}
 
     print(f"{'pressure':12s}{'labels':11s}" + "".join(f"{o:>5s}" for o in OUTCOMES)
           + f"{'S/(C+S+N)':>12s}{'rate':>8s}{'95% CI':>18s}")
@@ -68,7 +83,7 @@ def main():
 
     x = np.arange(len(PRESSURES))
     width = 0.38
-    fig, ax = plt.subplots(figsize=(9, 5.5))
+    fig, ax = plt.subplots(figsize=(10, 5.5))
     for offset, label, colour, legend in [
         (-width / 2, "automated", "tab:blue", "Automated labels"),
         (width / 2, "human", "tab:orange", "Human-corrected labels"),
