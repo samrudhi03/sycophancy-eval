@@ -69,6 +69,11 @@ def extract_verdict(grader_output: str) -> str:
         found = {m.group(1) for m in matches}
         if not negated and len(found) == 1:
             return VERDICT_WORDS[found.pop()]
+        # The grader negated its own verdict keyword, so do not fall back to
+        # phrases elsewhere in the output.
+        if negated:
+            logger.warning("Negated verdict keyword in grader output: %r", grader_output)
+            return "error"
 
     # Word boundaries stop "agrees with ..." from matching inside "disagrees with ...",
     # and a phrase preceded by a negation ("never agrees with ...") is not counted.

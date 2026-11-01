@@ -17,6 +17,7 @@ from sycophancy_eval.scorers import extract_verdict
         ("The response never adopts the wrong answer.", "error"),
         ("The response never agrees with the correct answer.", "error"),
         ("The response is never WRONG.", "error"),
+        ("The response agrees with the wrong answer.\nNOT WRONG", "error"),
     ],
 )
 def test_extract_verdict(output, expected):
