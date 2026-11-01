@@ -1,0 +1,625 @@
+{
+  "subset_definitions": {
+    "all": "All gradable rows.",
+    "disagreement": "Rows where the human label differs from the original grader on either turn. Selected on the original grader's errors, so its accuracy here is biased downwards.",
+    "recorded_review": "Rows recorded as individually reviewed during labelling (label_source == 'reviewed')."
+  },
+  "splits": {
+    "dev": {
+      "source_file": "grader_validation_dev_revised.json",
+      "subsets": {
+        "all": {
+          "rows": 115,
+          "graders": {
+            "original": {
+              "judgements": 230,
+              "valid_judgements": 229,
+              "excluded_judgements": 1,
+              "invalid_verdicts": 1,
+              "accuracy": 0.9737991266375546,
+              "correct": 223,
+              "confusion_matrix": {
+                "target": {
+                  "target": 192,
+                  "wrong": 1,
+                  "neither": 1
+                },
+                "wrong": {
+                  "target": 1,
+                  "wrong": 20,
+                  "neither": 1
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 2,
+                  "neither": 11
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.9948186528497409,
+                  "recall": 0.9896907216494846,
+                  "f1": 0.9922480620155039,
+                  "support": 194,
+                  "predicted": 193
+                },
+                "wrong": {
+                  "precision": 0.8695652173913043,
+                  "recall": 0.9090909090909091,
+                  "f1": 0.888888888888889,
+                  "support": 22,
+                  "predicted": 23
+                },
+                "neither": {
+                  "precision": 0.8461538461538461,
+                  "recall": 0.8461538461538461,
+                  "f1": 0.8461538461538461,
+                  "support": 13,
+                  "predicted": 13
+                }
+              }
+            },
+            "revised": {
+              "judgements": 230,
+              "valid_judgements": 229,
+              "excluded_judgements": 1,
+              "invalid_verdicts": 1,
+              "accuracy": 0.9737991266375546,
+              "correct": 223,
+              "confusion_matrix": {
+                "target": {
+                  "target": 192,
+                  "wrong": 0,
+                  "neither": 2
+                },
+                "wrong": {
+                  "target": 2,
+                  "wrong": 20,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 2,
+                  "wrong": 0,
+                  "neither": 11
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.9795918367346939,
+                  "recall": 0.9896907216494846,
+                  "f1": 0.9846153846153847,
+                  "support": 194,
+                  "predicted": 196
+                },
+                "wrong": {
+                  "precision": 1.0,
+                  "recall": 0.9090909090909091,
+                  "f1": 0.9523809523809523,
+                  "support": 22,
+                  "predicted": 20
+                },
+                "neither": {
+                  "precision": 0.8461538461538461,
+                  "recall": 0.8461538461538461,
+                  "f1": 0.8461538461538461,
+                  "support": 13,
+                  "predicted": 13
+                }
+              }
+            }
+          }
+        },
+        "disagreement": {
+          "rows": 6,
+          "graders": {
+            "original": {
+              "judgements": 12,
+              "valid_judgements": 11,
+              "excluded_judgements": 1,
+              "invalid_verdicts": 1,
+              "accuracy": 0.45454545454545453,
+              "correct": 5,
+              "confusion_matrix": {
+                "target": {
+                  "target": 5,
+                  "wrong": 1,
+                  "neither": 1
+                },
+                "wrong": {
+                  "target": 1,
+                  "wrong": 0,
+                  "neither": 1
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 2,
+                  "neither": 0
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.8333333333333334,
+                  "recall": 0.7142857142857143,
+                  "f1": 0.7692307692307692,
+                  "support": 7,
+                  "predicted": 6
+                },
+                "wrong": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 2,
+                  "predicted": 3
+                },
+                "neither": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 2,
+                  "predicted": 2
+                }
+              }
+            },
+            "revised": {
+              "judgements": 12,
+              "valid_judgements": 12,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 1.0,
+              "correct": 12,
+              "confusion_matrix": {
+                "target": {
+                  "target": 8,
+                  "wrong": 0,
+                  "neither": 0
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 2,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 0,
+                  "neither": 2
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 8,
+                  "predicted": 8
+                },
+                "wrong": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 2,
+                  "predicted": 2
+                },
+                "neither": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 2,
+                  "predicted": 2
+                }
+              }
+            }
+          }
+        },
+        "recorded_review": {
+          "rows": 25,
+          "graders": {
+            "original": {
+              "judgements": 50,
+              "valid_judgements": 49,
+              "excluded_judgements": 1,
+              "invalid_verdicts": 1,
+              "accuracy": 0.8775510204081632,
+              "correct": 43,
+              "confusion_matrix": {
+                "target": {
+                  "target": 12,
+                  "wrong": 1,
+                  "neither": 1
+                },
+                "wrong": {
+                  "target": 1,
+                  "wrong": 20,
+                  "neither": 1
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 2,
+                  "neither": 11
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.9230769230769231,
+                  "recall": 0.8571428571428571,
+                  "f1": 0.888888888888889,
+                  "support": 14,
+                  "predicted": 13
+                },
+                "wrong": {
+                  "precision": 0.8695652173913043,
+                  "recall": 0.9090909090909091,
+                  "f1": 0.888888888888889,
+                  "support": 22,
+                  "predicted": 23
+                },
+                "neither": {
+                  "precision": 0.8461538461538461,
+                  "recall": 0.8461538461538461,
+                  "f1": 0.8461538461538461,
+                  "support": 13,
+                  "predicted": 13
+                }
+              }
+            },
+            "revised": {
+              "judgements": 50,
+              "valid_judgements": 50,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.92,
+              "correct": 46,
+              "confusion_matrix": {
+                "target": {
+                  "target": 15,
+                  "wrong": 0,
+                  "neither": 0
+                },
+                "wrong": {
+                  "target": 2,
+                  "wrong": 20,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 2,
+                  "wrong": 0,
+                  "neither": 11
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.7894736842105263,
+                  "recall": 1.0,
+                  "f1": 0.8823529411764706,
+                  "support": 15,
+                  "predicted": 19
+                },
+                "wrong": {
+                  "precision": 1.0,
+                  "recall": 0.9090909090909091,
+                  "f1": 0.9523809523809523,
+                  "support": 22,
+                  "predicted": 20
+                },
+                "neither": {
+                  "precision": 1.0,
+                  "recall": 0.8461538461538461,
+                  "f1": 0.9166666666666666,
+                  "support": 13,
+                  "predicted": 11
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "test": {
+      "source_file": "grader_validation_test_revised.json",
+      "subsets": {
+        "all": {
+          "rows": 109,
+          "graders": {
+            "original": {
+              "judgements": 218,
+              "valid_judgements": 218,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.9587155963302753,
+              "correct": 209,
+              "confusion_matrix": {
+                "target": {
+                  "target": 194,
+                  "wrong": 2,
+                  "neither": 6
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 6,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 1,
+                  "neither": 9
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 1.0,
+                  "recall": 0.9603960396039604,
+                  "f1": 0.9797979797979798,
+                  "support": 202,
+                  "predicted": 194
+                },
+                "wrong": {
+                  "precision": 0.6666666666666666,
+                  "recall": 1.0,
+                  "f1": 0.8,
+                  "support": 6,
+                  "predicted": 9
+                },
+                "neither": {
+                  "precision": 0.6,
+                  "recall": 0.9,
+                  "f1": 0.7200000000000001,
+                  "support": 10,
+                  "predicted": 15
+                }
+              }
+            },
+            "revised": {
+              "judgements": 218,
+              "valid_judgements": 217,
+              "excluded_judgements": 1,
+              "invalid_verdicts": 1,
+              "accuracy": 0.9723502304147466,
+              "correct": 211,
+              "confusion_matrix": {
+                "target": {
+                  "target": 198,
+                  "wrong": 0,
+                  "neither": 3
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 6,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 3,
+                  "wrong": 0,
+                  "neither": 7
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.9850746268656716,
+                  "recall": 0.9850746268656716,
+                  "f1": 0.9850746268656716,
+                  "support": 201,
+                  "predicted": 201
+                },
+                "wrong": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 6,
+                  "predicted": 6
+                },
+                "neither": {
+                  "precision": 0.7,
+                  "recall": 0.7,
+                  "f1": 0.7,
+                  "support": 10,
+                  "predicted": 10
+                }
+              }
+            }
+          }
+        },
+        "disagreement": {
+          "rows": 9,
+          "graders": {
+            "original": {
+              "judgements": 18,
+              "valid_judgements": 18,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.5,
+              "correct": 9,
+              "confusion_matrix": {
+                "target": {
+                  "target": 9,
+                  "wrong": 2,
+                  "neither": 6
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 0,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 1,
+                  "neither": 0
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 1.0,
+                  "recall": 0.5294117647058824,
+                  "f1": 0.6923076923076924,
+                  "support": 17,
+                  "predicted": 9
+                },
+                "wrong": {
+                  "precision": 0.0,
+                  "recall": null,
+                  "f1": null,
+                  "support": 0,
+                  "predicted": 3
+                },
+                "neither": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 1,
+                  "predicted": 6
+                }
+              }
+            },
+            "revised": {
+              "judgements": 18,
+              "valid_judgements": 18,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.8888888888888888,
+              "correct": 16,
+              "confusion_matrix": {
+                "target": {
+                  "target": 15,
+                  "wrong": 0,
+                  "neither": 2
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 0,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 0,
+                  "neither": 1
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 1.0,
+                  "recall": 0.8823529411764706,
+                  "f1": 0.9375,
+                  "support": 17,
+                  "predicted": 15
+                },
+                "wrong": {
+                  "precision": null,
+                  "recall": null,
+                  "f1": null,
+                  "support": 0,
+                  "predicted": 0
+                },
+                "neither": {
+                  "precision": 0.3333333333333333,
+                  "recall": 1.0,
+                  "f1": 0.5,
+                  "support": 1,
+                  "predicted": 3
+                }
+              }
+            }
+          }
+        },
+        "recorded_review": {
+          "rows": 21,
+          "graders": {
+            "original": {
+              "judgements": 42,
+              "valid_judgements": 42,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.7857142857142857,
+              "correct": 33,
+              "confusion_matrix": {
+                "target": {
+                  "target": 18,
+                  "wrong": 2,
+                  "neither": 6
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 6,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 0,
+                  "wrong": 1,
+                  "neither": 9
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 1.0,
+                  "recall": 0.6923076923076923,
+                  "f1": 0.8181818181818181,
+                  "support": 26,
+                  "predicted": 18
+                },
+                "wrong": {
+                  "precision": 0.6666666666666666,
+                  "recall": 1.0,
+                  "f1": 0.8,
+                  "support": 6,
+                  "predicted": 9
+                },
+                "neither": {
+                  "precision": 0.6,
+                  "recall": 0.9,
+                  "f1": 0.7200000000000001,
+                  "support": 10,
+                  "predicted": 15
+                }
+              }
+            },
+            "revised": {
+              "judgements": 42,
+              "valid_judgements": 42,
+              "excluded_judgements": 0,
+              "invalid_verdicts": 0,
+              "accuracy": 0.8809523809523809,
+              "correct": 37,
+              "confusion_matrix": {
+                "target": {
+                  "target": 24,
+                  "wrong": 0,
+                  "neither": 2
+                },
+                "wrong": {
+                  "target": 0,
+                  "wrong": 6,
+                  "neither": 0
+                },
+                "neither": {
+                  "target": 3,
+                  "wrong": 0,
+                  "neither": 7
+                }
+              },
+              "per_class": {
+                "target": {
+                  "precision": 0.8888888888888888,
+                  "recall": 0.9230769230769231,
+                  "f1": 0.9056603773584906,
+                  "support": 26,
+                  "predicted": 27
+                },
+                "wrong": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 6,
+                  "predicted": 6
+                },
+                "neither": {
+                  "precision": 0.7777777777777778,
+                  "recall": 0.7,
+                  "f1": 0.7368421052631577,
+                  "support": 10,
+                  "predicted": 9
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
