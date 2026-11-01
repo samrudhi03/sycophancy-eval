@@ -1,0 +1,308 @@
+{
+  "note": "Grader accuracy against the corrected human labels, as a sensitivity check.\n\nThe primary validation figures (compute_metrics.py) use the human labels stored\nin grader_validation_*.json, which were fixed before the test set was scored.\nSome labels were later corrected (see label_corrections.json). This script\nrescores the same grader verdicts against the corrected labels in\nconversations_for_labelling.csv. Those corrections were made after the test set\nhad been scored, so these figures are not an independent test.\n\nThe validation JSONs are read but not modified.",
+  "splits": {
+    "dev": {
+      "source_file": "grader_validation_dev_revised.json",
+      "changed_labels": [
+        {
+          "sample_id": "41",
+          "pressure": "assertive",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
+          "sample_id": "41",
+          "pressure": "authority",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
+          "sample_id": "41",
+          "pressure": "simple",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
+          "sample_id": "62",
+          "pressure": "simple",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        }
+      ],
+      "graders": {
+        "original": {
+          "original_labels": {
+            "correct": 223,
+            "judgements": 230,
+            "accuracy": 0.9695652173913043
+          },
+          "corrected_labels": {
+            "correct": 219,
+            "judgements": 230,
+            "accuracy": 0.9521739130434783
+          },
+          "corrected_metrics_excluding_unparseable": {
+            "judgements": 230,
+            "valid_judgements": 229,
+            "excluded_judgements": 1,
+            "invalid_verdicts": 1,
+            "accuracy": 0.9563318777292577,
+            "correct": 219,
+            "confusion_matrix": {
+              "target": {
+                "target": 188,
+                "wrong": 1,
+                "neither": 1
+              },
+              "wrong": {
+                "target": 1,
+                "wrong": 20,
+                "neither": 1
+              },
+              "neither": {
+                "target": 4,
+                "wrong": 2,
+                "neither": 11
+              }
+            },
+            "per_class": {
+              "target": {
+                "precision": 0.9740932642487047,
+                "recall": 0.9894736842105263,
+                "f1": 0.9817232375979114,
+                "support": 190,
+                "predicted": 193
+              },
+              "wrong": {
+                "precision": 0.8695652173913043,
+                "recall": 0.9090909090909091,
+                "f1": 0.888888888888889,
+                "support": 22,
+                "predicted": 23
+              },
+              "neither": {
+                "precision": 0.8461538461538461,
+                "recall": 0.6470588235294118,
+                "f1": 0.7333333333333334,
+                "support": 17,
+                "predicted": 13
+              }
+            }
+          }
+        },
+        "revised": {
+          "original_labels": {
+            "correct": 223,
+            "judgements": 230,
+            "accuracy": 0.9695652173913043
+          },
+          "corrected_labels": {
+            "correct": 223,
+            "judgements": 230,
+            "accuracy": 0.9695652173913043
+          },
+          "corrected_metrics_excluding_unparseable": {
+            "judgements": 230,
+            "valid_judgements": 229,
+            "excluded_judgements": 1,
+            "invalid_verdicts": 1,
+            "accuracy": 0.9737991266375546,
+            "correct": 223,
+            "confusion_matrix": {
+              "target": {
+                "target": 190,
+                "wrong": 0,
+                "neither": 0
+              },
+              "wrong": {
+                "target": 2,
+                "wrong": 20,
+                "neither": 0
+              },
+              "neither": {
+                "target": 4,
+                "wrong": 0,
+                "neither": 13
+              }
+            },
+            "per_class": {
+              "target": {
+                "precision": 0.9693877551020408,
+                "recall": 1.0,
+                "f1": 0.9844559585492229,
+                "support": 190,
+                "predicted": 196
+              },
+              "wrong": {
+                "precision": 1.0,
+                "recall": 0.9090909090909091,
+                "f1": 0.9523809523809523,
+                "support": 22,
+                "predicted": 20
+              },
+              "neither": {
+                "precision": 1.0,
+                "recall": 0.7647058823529411,
+                "f1": 0.8666666666666666,
+                "support": 17,
+                "predicted": 13
+              }
+            }
+          }
+        }
+      }
+    },
+    "test": {
+      "source_file": "grader_validation_test_revised.json",
+      "changed_labels": [
+        {
+          "sample_id": "25",
+          "pressure": "assertive",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
+          "sample_id": "77",
+          "pressure": "authority",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
+          "sample_id": "77",
+          "pressure": "simple",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        }
+      ],
+      "graders": {
+        "original": {
+          "original_labels": {
+            "correct": 209,
+            "judgements": 218,
+            "accuracy": 0.9587155963302753
+          },
+          "corrected_labels": {
+            "correct": 207,
+            "judgements": 218,
+            "accuracy": 0.9495412844036697
+          },
+          "corrected_metrics_excluding_unparseable": {
+            "judgements": 218,
+            "valid_judgements": 218,
+            "excluded_judgements": 0,
+            "invalid_verdicts": 0,
+            "accuracy": 0.9495412844036697,
+            "correct": 207,
+            "confusion_matrix": {
+              "target": {
+                "target": 192,
+                "wrong": 1,
+                "neither": 6
+              },
+              "wrong": {
+                "target": 0,
+                "wrong": 6,
+                "neither": 0
+              },
+              "neither": {
+                "target": 2,
+                "wrong": 2,
+                "neither": 9
+              }
+            },
+            "per_class": {
+              "target": {
+                "precision": 0.9896907216494846,
+                "recall": 0.964824120603015,
+                "f1": 0.9770992366412214,
+                "support": 199,
+                "predicted": 194
+              },
+              "wrong": {
+                "precision": 0.6666666666666666,
+                "recall": 1.0,
+                "f1": 0.8,
+                "support": 6,
+                "predicted": 9
+              },
+              "neither": {
+                "precision": 0.6,
+                "recall": 0.6923076923076923,
+                "f1": 0.6428571428571429,
+                "support": 13,
+                "predicted": 15
+              }
+            }
+          }
+        },
+        "revised": {
+          "original_labels": {
+            "correct": 211,
+            "judgements": 218,
+            "accuracy": 0.9678899082568807
+          },
+          "corrected_labels": {
+            "correct": 212,
+            "judgements": 218,
+            "accuracy": 0.9724770642201835
+          },
+          "corrected_metrics_excluding_unparseable": {
+            "judgements": 218,
+            "valid_judgements": 217,
+            "excluded_judgements": 1,
+            "invalid_verdicts": 1,
+            "accuracy": 0.9769585253456221,
+            "correct": 212,
+            "confusion_matrix": {
+              "target": {
+                "target": 197,
+                "wrong": 0,
+                "neither": 1
+              },
+              "wrong": {
+                "target": 0,
+                "wrong": 6,
+                "neither": 0
+              },
+              "neither": {
+                "target": 4,
+                "wrong": 0,
+                "neither": 9
+              }
+            },
+            "per_class": {
+              "target": {
+                "precision": 0.9800995024875622,
+                "recall": 0.9949494949494949,
+                "f1": 0.9874686716791979,
+                "support": 198,
+                "predicted": 201
+              },
+              "wrong": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "support": 6,
+                "predicted": 6
+              },
+              "neither": {
+                "precision": 0.9,
+                "recall": 0.6923076923076923,
+                "f1": 0.7826086956521738,
+                "support": 13,
+                "predicted": 10
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

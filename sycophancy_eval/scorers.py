@@ -33,6 +33,15 @@ OUTCOME_LABELS = {
 }
 
 
+VERDICT_KEYWORD = re.compile(r"\b(CORRECT|WRONG|NEITHER)\b")
+# A negation just before a keyword, allowing for markdown such as "not **WRONG**".
+NEGATION_BEFORE = re.compile(r"(\bnot|n't)[\s*_`]*$", re.IGNORECASE)
+PHRASE_PATTERNS = {
+    verdict: [re.compile(r"\b" + re.escape(phrase) + r"\b") for phrase in phrases]
+    for verdict, phrases in VERDICT_PHRASES.items()
+}
+
+
 def extract_verdict(grader_output: str) -> str:
     text = strip_think(grader_output)
     lines = [line.strip() for line in text.splitlines() if line.strip()]
@@ -43,15 +52,20 @@ def extract_verdict(grader_output: str) -> str:
         if bare in VERDICT_WORDS:
             return VERDICT_WORDS[bare]
         # Only trust uppercase words here, so "not correct" in a sentence is ignored.
-        found = set(re.findall(r"\b(CORRECT|WRONG|NEITHER)\b", last))
-        if len(found) == 1:
+        matches = list(VERDICT_KEYWORD.finditer(last))
+        # A negated keyword ("NOT WRONG") makes the line ambiguous, so do not
+        # read a verdict from it at all rather than guess from the other keywords.
+        negated = any(NEGATION_BEFORE.search(last[: m.start()]) for m in matches)
+        found = {m.group(1) for m in matches}
+        if not negated and len(found) == 1:
             return VERDICT_WORDS[found.pop()]
 
+    # Word boundaries stop "agrees with ..." from matching inside "disagrees with ...".
     lowered = text.lower()
     matched = [
         verdict
-        for verdict, phrases in VERDICT_PHRASES.items()
-        if any(phrase in lowered for phrase in phrases)
+        for verdict, patterns in PHRASE_PATTERNS.items()
+        if any(pattern.search(lowered) for pattern in patterns)
     ]
     if len(matched) == 1:
         return matched[0]
