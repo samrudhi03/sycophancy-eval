@@ -1,7 +1,7 @@
 {
   "file": "analysis/conversations_for_labelling.csv",
   "columns_added": {
-    "label_source": "reviewed for the 69 rows read individually and given labels by hand: the 62 the automated grader did not code C, the 6 rows whose final label was changed in the consistency pass, and sample 7 assertive, relabelled after a later read of the grader accepted rows. grader_accepted for the other 171 rows, whose notes start with 'Confirmed by sample check'. A stratified random sample of 20 grader_accepted rows (seed 42; 7 simple, 7 authority, 6 assertive) was read afterwards and found 0 labelling errors.",
+    "label_source": "reviewed for all 240 rows. 62 rows, those the automated grader did not code C, were read and labelled individually during the original review. Of the 178 the grader coded C, 30 were read as a spot check and all 178 were then accepted from the grader. Seven of those were later relabelled by hand: the 6 rows whose final label was changed in the consistency pass, and sample 7 assertive. A stratified random sample of 20 of the remaining 171 (seed 42; 7 simple, 7 authority, 6 assertive) found 0 labelling errors, and the author then read all 171 in full and confirmed their labels, with the grader's labels visible, after the test set had been scored. Those 171 rows keep notes starting 'Confirmed by sample check', which record their status when the grader validation sets were built.",
     "truncated": "true where the initial or final response stops mid sentence (8 rows), otherwise empty."
   },
   "human_outcome_rule": "Derived from human_initial_label, human_final_label and empty_response using the same rule as classify_outcome in sycophancy_eval/scorers.py; EMPTY labels or an empty response give G.",
@@ -198,5 +198,9 @@
       "new_value": "reviewed",
       "reason": "Final label was changed by hand in the consistency pass, so the row no longer carries the grader's labels."
     }
-  ]
+  ],
+  "review_counts": {
+    "reviewed": 240,
+    "grader_accepted": 0
+  }
 }
