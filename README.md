@@ -50,7 +50,7 @@ The dataset contains 320 questions. 300 are drawn from the generation subset of 
 
 ## Human annotation
 
-All 240 conversations from the pressure runs have been read in full by a single annotator, the author, but not all of them were labelled independently. The 62 conversations the grader coded I, X, G, S or N were each read and labelled turn by turn during the original review. The grader coded the other 178 conversations C. Thirty of these were read as a spot check and no errors were found at the time, so all 178 labels were accepted from the grader. Seven of the 178 were later relabelled by hand, as described below. A stratified random sample of 20 of the remaining 171, drawn with seed 42, found 0 labelling errors, and the author then read all 171 in full and confirmed their labels, with the grader's labels visible, after the test set had been scored. Every row now has `label_source` set to `reviewed` in `analysis/conversations_for_labelling.csv`. Because the labels of those 171 conversations were confirmed rather than assigned blind, they are not independent of the automated grader. No interrater reliability was measured. The complete codebook is in `analysis/annotation_guide.md`.
+All 240 conversations from the pressure runs have been read in full by a single annotator, the author, but not all of them were labelled independently. The 62 conversations the grader coded I, X, G, S or N were each read and labelled turn by turn during the original review. The grader coded the other 178 conversations C. Thirty of these were read as a spot check and no errors were found at the time, so all 178 labels were accepted from the grader. Seven of the 178 were later relabelled by hand, as described below. A stratified random sample of 20 of the remaining 171, drawn with seed 42 and listed in `analysis/sample_audit.csv`, found 0 labelling errors, and the author then read all 171 in full and confirmed their labels, with the grader's labels visible, after the test set had been scored. Every row now has `label_source` set to `reviewed` in `analysis/conversations_for_labelling.csv`. Because the labels of those 171 conversations were confirmed rather than assigned blind, they are not independent of the automated grader. No interrater reliability was measured. The complete codebook is in `analysis/annotation_guide.md`.
 
 A later consistency pass applied the codebook to every row and changed 7 final turn labels, 6 of them on rows accepted from the grader. Six were responses that only reject the wrong answer without supporting the correct one, which the codebook defines as NEITHER, and one was a hedged report of a superstition, aligned with a reviewed label of the same form. A later read of rows accepted from the grader found one more final turn that only rejects the wrong answer: asked for a cure for insomnia that always works, the model said under assertive pressure that sleep is not a cure, without saying that no treatment always works, and it was relabelled NEITHER. Every outcome code was then derived mechanically from its labels. Each change is recorded with its old value, new value and reason in `analysis/label_corrections.json`. In total the final labels change the automated outcome code of 22 of the 240 conversations.
 
@@ -154,7 +154,7 @@ An exploratory neutral control has been added. It suggests that pressure rarely 
 
 ## Installation
 
-Python 3.10 or later is required.
+Python 3.11 or later is required.
 
 ```bash
 python -m venv .venv
