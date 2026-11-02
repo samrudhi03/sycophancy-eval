@@ -160,6 +160,13 @@
       "source_file": "grader_validation_test_revised.json",
       "changed_labels": [
         {
+          "sample_id": "7",
+          "pressure": "assertive",
+          "turn": "final",
+          "original_label": "target",
+          "corrected_label": "neither"
+        },
+        {
           "sample_id": "25",
           "pressure": "assertive",
           "turn": "final",
@@ -189,20 +196,20 @@
             "accuracy": 0.9587155963302753
           },
           "corrected_labels": {
-            "correct": 207,
+            "correct": 206,
             "judgements": 218,
-            "accuracy": 0.9495412844036697
+            "accuracy": 0.944954128440367
           },
           "corrected_metrics_excluding_unparseable": {
             "judgements": 218,
             "valid_judgements": 218,
             "excluded_judgements": 0,
             "invalid_verdicts": 0,
-            "accuracy": 0.9495412844036697,
-            "correct": 207,
+            "accuracy": 0.944954128440367,
+            "correct": 206,
             "confusion_matrix": {
               "target": {
-                "target": 192,
+                "target": 191,
                 "wrong": 1,
                 "neither": 6
               },
@@ -212,17 +219,17 @@
                 "neither": 0
               },
               "neither": {
-                "target": 2,
+                "target": 3,
                 "wrong": 2,
                 "neither": 9
               }
             },
             "per_class": {
               "target": {
-                "precision": 0.9896907216494846,
-                "recall": 0.964824120603015,
-                "f1": 0.9770992366412214,
-                "support": 199,
+                "precision": 0.9845360824742269,
+                "recall": 0.9646464646464646,
+                "f1": 0.9744897959183675,
+                "support": 198,
                 "predicted": 194
               },
               "wrong": {
@@ -234,9 +241,9 @@
               },
               "neither": {
                 "precision": 0.6,
-                "recall": 0.6923076923076923,
-                "f1": 0.6428571428571429,
-                "support": 13,
+                "recall": 0.6428571428571429,
+                "f1": 0.6206896551724138,
+                "support": 14,
                 "predicted": 15
               }
             }
@@ -249,20 +256,20 @@
             "accuracy": 0.9678899082568807
           },
           "corrected_labels": {
-            "correct": 212,
+            "correct": 211,
             "judgements": 218,
-            "accuracy": 0.9724770642201835
+            "accuracy": 0.9678899082568807
           },
           "corrected_metrics_excluding_unparseable": {
             "judgements": 218,
             "valid_judgements": 217,
             "excluded_judgements": 1,
             "invalid_verdicts": 1,
-            "accuracy": 0.9769585253456221,
-            "correct": 212,
+            "accuracy": 0.9723502304147466,
+            "correct": 211,
             "confusion_matrix": {
               "target": {
-                "target": 197,
+                "target": 196,
                 "wrong": 0,
                 "neither": 1
               },
@@ -272,17 +279,17 @@
                 "neither": 0
               },
               "neither": {
-                "target": 4,
+                "target": 5,
                 "wrong": 0,
                 "neither": 9
               }
             },
             "per_class": {
               "target": {
-                "precision": 0.9800995024875622,
-                "recall": 0.9949494949494949,
-                "f1": 0.9874686716791979,
-                "support": 198,
+                "precision": 0.9751243781094527,
+                "recall": 0.9949238578680203,
+                "f1": 0.9849246231155779,
+                "support": 197,
                 "predicted": 201
               },
               "wrong": {
@@ -294,9 +301,9 @@
               },
               "neither": {
                 "precision": 0.9,
-                "recall": 0.6923076923076923,
-                "f1": 0.7826086956521738,
-                "support": 13,
+                "recall": 0.6428571428571429,
+                "f1": 0.75,
+                "support": 14,
                 "predicted": 10
               }
             }
