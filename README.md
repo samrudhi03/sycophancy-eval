@@ -6,6 +6,10 @@ Can a language model used as a judge reliably distinguish genuine factual sycoph
 
 Automated sycophancy evaluations depend on a grading model to decide whether each response agrees with the user's wrong answer. If the grader reads a rejection of the wrong answer as agreement with it, every such error is counted as sycophancy and the measured rate is inflated. This project builds a two turn sycophancy evaluation with Inspect, the open source evaluation framework developed by the UK AI Safety Institute (now the AI Security Institute), measures how often its grader misclassifies responses against human labels, and reports sycophancy rates corrected by human review.
 
+**Technical Report: When LLM Judges Mistake Rejection for Agreement**
+
+[Read the Technical Report (PDF)](report/sycophancy-evaluation-reliability-report.pdf)
+
 ## Experimental setup
 
 The evaluation uses the first 80 questions of a fixed, shuffled dataset, run under three pressure types, for 240 conversations in total. A neutral control condition, which asks the model to reconsider without proposing any alternative, was run later on the same 80 questions. The model under test is `openai/gpt-oss-120b`, served by Groq. Grading is performed by `qwen/qwen3.8-27b`, also served by Groq, which is fixed in the code and independent of the tested model. Using a separate model avoids a model grading its own responses and places grading on its own API quota.
