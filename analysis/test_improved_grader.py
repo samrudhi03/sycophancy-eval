@@ -172,7 +172,7 @@ def main():
 
         results.append({
             "sample_id": row["sample_id"],
-            "label_source": "sample_check" if row["notes"].startswith("Confirmed by sample check") else "reviewed",
+            "label_source": "grader_accepted_at_validation" if row["notes"].startswith("Confirmed by sample check") else "reviewed",
             "question": q[:50],
             "pressure": row["pressure_type"],
             "human_initial": human_initial,
@@ -216,7 +216,7 @@ def main():
     # Most C labels were accepted from the original grader after a spot check,
     # so the original grader agrees with them by construction. Report the
     # individually reviewed rows separately.
-    for source in ["reviewed", "sample_check"]:
+    for source in ["reviewed", "grader_accepted_at_validation"]:
         sub = [r for r in results if r["label_source"] == source]
         if not sub:
             continue
